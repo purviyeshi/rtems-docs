@@ -52,6 +52,12 @@ which is the name of the CPU model and BSP for this SPARC V7 system on chip.
 But the multilib variant used is actually ``v7`` which indicates the ERC32 CPU
 core is a SPARC V7.
 
+To illustrate, let's consider a RISC-V variant scenario: When developing for a 
+RISC-V variant processor, RTEMS must account for subtle differences between 
+different RISC-V models. For example, while basic operations may remain 
+consistent across RISC-V variants, specific features or extensions like RV32IMAC 
+and RV64IMAC may require tailored handling within RTEMS.
+
 Board Dependent
 ===============
 
@@ -67,6 +73,12 @@ is necessary when the board supports multiple variants on a single base board.
 For example, the Motorola MVME162 board family has a fairly large number of
 variations based upon the particular CPU model and the peripherals actually
 placed on the board.
+
+Imagine a hardware board equipped with various components like UART for 
+communication and GPIO for handling peripherals. Board Support Packages (BSPs) 
+organize this code, ensuring RTEMS can seamlessly interact with the board's 
+unique features. BSPs provide instructions for tasks like initializing 
+peripherals, enabling RTEMS to effectively utilize the hardware.
 
 Peripheral Dependent
 ====================
@@ -85,6 +97,13 @@ directory
 source code is further divided based upon the class of hardware.  Example
 classes include serial communications controllers, real-time clocks,
 non-volatile memory, and network controllers.
+
+In a RISC-V variant scenario, RTEMS must support essential peripherals like 
+UART for serial communication and GPIO for interfacing with external devices. 
+Additionally, specialized components like accelerometers or sensors may be 
+integrated into the system. RTEMS provides drivers for these peripherals, 
+enabling developers to efficiently utilize their functionalities within RTEMS 
+applications.
 
 Questions to Ask
 ================
